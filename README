@@ -1,10 +1,10 @@
 recipe-app
 
 updated user page
-- Added database
+- Added database for users
 - When user is not logged in, user dropdown only displays Sign In/ Register
-- When user is logged in, in nvabar you can see Hi, + "username", My profile, 
-Favorites, Sign Out items in dropdown
+- But when user is logged in, in navbar we can see Hi, + "username", My profile, 
+Favorites, Sign Out in the dropdown
 - Added valid error messages such as username is taken, email already in use,
 and username, password doesnot match
 
