@@ -1,27 +1,43 @@
-// Takes array of food names and optionally, array of weight strings
-// Returns associative array where key is food name
-// and value is calorie count.
-//
-// Example: calories(["chicken", "pork"], ["20 oz", "2 lbs"])
-async function calories(ingredients, weights = []) {
-    url = "https://rafaels.sgedu.site/calories.php"
+// Calls api for calorie counts
+// Returns promise for an associative array where key is food name and value is calorie count.
+// 
+// ingredients = array of food names eg ["Chicken", "Rice", "Falafel"]
+// optional weights = array of strings representing weights eg ["20 oz", "2 lbs", "4 cups"]
+// optional callBack = function to run when call to api is done. 
+//     callBack function takes an associative array where key is food name and value is calorie count.
+async function calories(ingredients, weights = [], callBack = null) {
+    url = "https://api.api-ninjas.com/v1/nutrition?query="
+    ak = "Xw8Y9UPSEz9fURhT0KiM9g==9fGe6d6ky2AnLE4O"
 
-    queryParams = {}
+    queries = []
     for (i = 0; i < ingredients.length; i++) {
-        key = "item" + i
-        value = ingredients[i]
         if (i < weights.length) {
-            value = weights[i] + " " + value
+            query = weights[i] + " "
+        } else {
+            query = ""
         }
 
-        queryParams[key] = value
+        query += ingredients[i]
+        queries.push(query)
     }
     
-    queryString = new URLSearchParams(queryParams).toString()
-    url = url + "?" + queryString
+    queryString = queries.join(" and ")
+    url = url + queryString
 
-    cals = await fetch(url)
+    data = await fetch(url, {headers: {"X-Api-Key":ak}})
         .then((res) => {return res.json()})
 
+    cals = {}
+    data.forEach( (food) => {
+        f_name = food["name"]
+        f_cal = food["calories"]
+        cals[f_name] = f_cal}
+    )
+    
+    if (callback) {
+        callback(cals)
+    }
+    
     return cals
 }   
+
