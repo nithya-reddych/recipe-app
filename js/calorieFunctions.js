@@ -29,8 +29,8 @@ async function calories(ingredients, weights = [], callBack = null) {
 
     cals = {}
     data.forEach( (food) => {
-        f_name = food["name"]
-        f_cal = food["calories"]
+        f_name = food["name"].trim()
+        f_cal = food["calories"].trim()
         cals[f_name] = f_cal}
     )
     
