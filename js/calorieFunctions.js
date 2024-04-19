@@ -34,8 +34,8 @@ async function calories(ingredients, weights = [], callBack = null) {
         cals[f_name] = f_cal}
     )
     
-    if (callback) {
-        callback(cals)
+    if (callBack) {
+        callBack(cals)
     }
     
     return cals
