@@ -39,5 +39,29 @@ async function calories(ingredients, weights = [], callBack = null) {
     }
     
     return cals
+}
+
+async function calories_descriptive(ingredients, callBack = null) {
+    url = "https://api.api-ninjas.com/v1/nutrition?query="
+    ak = "Xw8Y9UPSEz9fURhT0KiM9g==9fGe6d6ky2AnLE4O"
+    
+    queryString = ingredients.join(" and ")
+    url = url + queryString
+
+    data = await fetch(url, {headers: {"X-Api-Key":ak}})
+        .then((res) => {return res.json()})
+
+    cals = {}
+    data.forEach( (food) => {
+        f_name = food["name"].trim()
+        f_cal = food["calories"]
+        cals[f_name] = f_cal}
+    )
+    
+    if (callBack) {
+        callBack(cals)
+    }
+    
+    return cals
 }   
 
