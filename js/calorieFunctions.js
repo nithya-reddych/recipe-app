@@ -4,7 +4,7 @@
 //
 // Example: calories(["chicken", "pork"], ["20 oz", "2 lbs"])
 async function calories(ingredients, weights = []) {
-    url = "https://nithya-reddych.github.io/recipe-app/calories.php"
+    url = "https://rafaels.sgedu.site/calories.php"
 
     queryParams = {}
     for (i = 0; i < ingredients.length; i++) {
