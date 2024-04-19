@@ -6,8 +6,11 @@
 // optional callBack = function to run when call to api is done. 
 //     callBack function takes an associative array where key is food name and value is calorie count.
 async function calories(ingredients, weights = [], callBack = null) {
-    url = "https://api.api-ninjas.com/v1/nutrition?query="
-    ak = "Xw8Y9UPSEz9fURhT0KiM9g==9fGe6d6ky2AnLE4O"
+    // url = "https://api.api-ninjas.com/v1/nutrition?query="
+    // ak = "Xw8Y9UPSEz9fURhT0KiM9g==9fGe6d6ky2AnLE4O"
+
+    url = "https://api.calorieninjas.com/v1/nutrition?query="
+    ak = "Xw8Y9UPSEz9fURhT0KiM9g==CrZcyVtrANzylzGo"
 
     queries = []
     for (i = 0; i < ingredients.length; i++) {
@@ -41,9 +44,18 @@ async function calories(ingredients, weights = [], callBack = null) {
     return cals
 }
 
+// Calls api for calorie counts
+// Returns promise for an associative array where key is food name and value is calorie count.
+// 
+// ingredients = array of strings eg ['3 large fresh rosemary sprigs', '2 2-pound racks of lamb (8 chops each)']
+// optional callBack = function to run when call to api is done. 
+//     callBack function takes an associative array where key is food name and value is calorie count.
 async function calories_descriptive(ingredients, callBack = null) {
-    url = "https://api.api-ninjas.com/v1/nutrition?query="
-    ak = "Xw8Y9UPSEz9fURhT0KiM9g==9fGe6d6ky2AnLE4O"
+    // url = "https://api.api-ninjas.com/v1/nutrition?query="
+    // ak = "Xw8Y9UPSEz9fURhT0KiM9g==9fGe6d6ky2AnLE4O"
+
+    url = "https://api.calorieninjas.com/v1/nutrition?query="
+    ak = "Xw8Y9UPSEz9fURhT0KiM9g==CrZcyVtrANzylzGo"
     
     queryString = ingredients.join(" and ")
     url = url + queryString
@@ -52,7 +64,7 @@ async function calories_descriptive(ingredients, callBack = null) {
         .then((res) => {return res.json()})
 
     cals = {}
-    data.forEach( (food) => {
+    data["items"].forEach( (food) => {
         f_name = food["name"].trim()
         f_cal = food["calories"]
         cals[f_name] = f_cal}
@@ -64,4 +76,3 @@ async function calories_descriptive(ingredients, callBack = null) {
     
     return cals
 }   
-
