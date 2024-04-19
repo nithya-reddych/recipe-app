@@ -15,7 +15,7 @@
                         '2 2-pound racks of lamb (8 chops each)', 
                         'trimmed', 
                         'frenched']
-            calories(foods, writeDown)
+            calories_descriptive(foods, writeDown)
             function writeDown(data) {
                 console.log("in callback")
                 Object.keys(data).forEach((item) => document.write(item + " : " + data[item] + "<br>"))
