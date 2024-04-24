@@ -25,14 +25,71 @@ if ($isLoggedIn) {
 <script src="https://kit.fontawesome.com/96c75676d8.js" crossorigin="anonymous"></script>
 
 <?php include 'navbar.php'; ?>
+<script src="calorieFunctions.js"></script>
+
 <title>Name</title>
 
 </head>
 <body>
 <div id="navbar-placeholder"></div>
+<div class="container">
+        <h1>Calculate Calories in Your Recipe</h1>
+        <form id="ingredientForm">
+            <textarea id="ingredients" name="ingredients" rows="5" placeholder="Enter ingredients separated by a newline or comma..."></textarea>
+            <button type="submit">Calculate Calories</button>
+        </form>
+        <div id="results"></div>
+    </div>
 
+    <script>
+        document.getElementById('ingredientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let ingredients = document.getElementById('ingredients').value.split(/\n|,/).map(ing => ing.trim()).filter(ing => ing.length);
+            calories_descriptive(ingredients, displayCalories);
+        });
 
+        function displayCalories(calorieData) {
+            const results = document.getElementById('results');
+            results.innerHTML = ''; // Clear previous results
+            Object.keys(calorieData).forEach(key => {
+                const content = document.createElement('p');
+                content.textContent = `${key}: ${calorieData[key]} calories`;
+                results.appendChild(content);
+            });
+        }
+    </script>
 
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('./images/bg1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
 
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
 </body>
 </html>
