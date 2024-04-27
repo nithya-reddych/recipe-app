@@ -1,4 +1,5 @@
 <?php
+
 $str = $_GET['ingredient'];
 $cleanStr = urldecode($str);
 $arr = explode(',', $cleanStr);
@@ -34,16 +35,25 @@ while($row = $result->fetch_assoc()) {
             echo $row2['Cleaned_Ingredients'] . "<br/>";
             $ingredients_list[] = $row2['Cleaned_Ingredients']; // Prepare array for JS
         }
+
+        $display_func = "function displayCalories(calorieData) {
+                total = 0
+                Object.keys(calorieData).forEach((key) => total += calorieData[key])
+                
+                parent = document.getElementById('calories-". $row['ID'] ."')
+                content = document.createElement('p')
+                content.textContent = total + ' calories'
+                parent.innerHTML = ''
+                parent.appendChild(content)
+                }";
+
         echo "<br>Instructions:</br>" . $row['Instructions'];
         echo "<div id='calories-". $row['ID'] ."'></div>";
-        echo "<button onclick=\"calculateCalories(['" . implode("', '", $ingredients_list) . "'], 'calories-" . $row['ID'] . "')\">Check Calories</button>";
+        echo "<button onclick=\"calories_descriptive(['" . implode("', '", $ingredients_list) . "'],". $display_func .")\">Check Calories</button>";
         echo "</div>";
     }
     $counter++;
 }
 echo "</div>";
+echo '<script src="calorieFunctions.js"></script>';
 ?>
-
-<script src="calorieFunctions.js"></script>
-
-
