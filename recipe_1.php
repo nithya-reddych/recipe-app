@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Search Recipes and Calculate Calories</h1>
-    <form id="ingredientForm" action="display.php" method="GET">
+    <form id="ingredientForm" action="display_1.php" method="GET">
         <textarea name="ingredients" rows="5" placeholder="Enter ingredients separated by a newline or comma..."></textarea>
         <button type="submit">Submit</button>
     </form>
