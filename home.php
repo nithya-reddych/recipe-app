@@ -52,10 +52,12 @@ h1 {
     </video>
 
     <div id="navbar-placeholder"></div>
-    <div class="coming-soon">Finding a recipe to suit your mood is now easy!</div>
-    <a href="recipes.html" style="text-decoration: none;">
-        <button class="get-started-button">Get Started</button>
-    </a>
+        <div class="coming-soon"><p>Finding a recipe to suit your mood is now easy!<p>
+            <a href="recipes.php" style="text-decoration: none;">
+                <button class="get-started-button">Get Started</button>
+            </a>
+        </div>
+
 </div>
 <div class="below-video-section">
     <h1>ABOUT US</h1>
