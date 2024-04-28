@@ -1,3 +1,15 @@
+<?php
+session_start(); 
+
+$username = '';
+$isLoggedIn = isset($_SESSION['login_user']);
+if ($isLoggedIn) {
+    $username = htmlspecialchars($_SESSION['login_user']);
+} else {
+    $username = 'User';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,15 +113,6 @@ textarea {
     </form>
     <div id="recipeResults" class="recipe-grid">
     <?php
-    session_start(); 
-
-    $username = '';
-    $isLoggedIn = isset($_SESSION['login_user']);
-    if ($isLoggedIn) {
-        $username = htmlspecialchars($_SESSION['login_user']);
-    } else {
-        $username = 'User';
-    }
     
     if(isset($_GET['ingredients'])) {
         $str = $_GET['ingredients'];
