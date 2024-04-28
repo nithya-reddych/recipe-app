@@ -79,7 +79,6 @@ $isLoggedIn = isset($_SESSION['login_user']);
             <button class="dropbtn"><?= $isLoggedIn ? 'Hi, ' . $username : 'User'; ?></button>
             <div class="dropdown-content">
                 <?= $isLoggedIn ? '<a href="profile.php">My Profile</a>
-                    <a href="fav.php">Favorites</a>
                     <a href="logout.php">Sign Out</a>' : 
                     '<a href="login.php">Sign In / Register</a>'; ?>
             </div>

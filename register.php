@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $sql = "INSERT INTO users (username, email, password, birthday) VALUES ('$username', '$email', '$hashed_password', '$birthday')";
         if ($conn->query($sql) === TRUE) {
-            $_SESSION['login_user'] = $email;
+            $_SESSION['login_user'] = $username;
             header("location: profile.php");
         } else {
             $error = "Error: " . $sql . "<br>" . $conn->error;
