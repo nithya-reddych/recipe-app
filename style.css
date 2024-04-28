@@ -28,10 +28,10 @@
 }
 
 .get-started-button {
-    position: absolute;
+    /* position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     padding: 15px 30px;
     font-size: 20px;
     font-family: "Josefin Sans", sans-serif;
@@ -51,6 +51,8 @@
 
 .section-below-video {
     display: flex;
+    height: fit-content;
+    flex-wrap:wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -62,12 +64,17 @@
 
 .left-text{
     padding: 20px;
-    margin-top: -140px;
-    margin-left: 30px;
+    align-self: center;
+    min-width: 500px;
+    /* margin-top: -140px;
+    margin-left: 30px; */
 }
+
 .right-image{
     padding: 20px;
+    min-width: 500px;
 }
+
 .right-food, .right-mind {
 font-size: 40px;
 font-family: "Josefin Sans", sans-serif;  
@@ -112,6 +119,7 @@ color: #4a4a4a;
     padding: 10px;
     background-color: #967a5f;
     text-align: center;
+    min-width: 310px;
 }
 
 .recipe img {
@@ -155,6 +163,11 @@ color: #4a4a4a;
 
     background-color: #ffffff;
 }
+
+.interactive-section>div {
+    min-width: 380px;
+}
+
 .fun-zone button {
     padding: 10px 20px;
     background-color: #000000;
@@ -171,6 +184,7 @@ color: #4a4a4a;
 .fun-zone button:hover {
     background-color: #3f3f3f; 
 }
+
 .site-footer {
     background-color: #8e5c40;
     color: rgb(0, 0, 0);
@@ -182,6 +196,7 @@ color: #4a4a4a;
 
 .footer-content {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     padding: 0;
@@ -190,6 +205,8 @@ color: #4a4a4a;
 .footer-logo {
     flex: 1;
     display: flex;
+    overflow:hidden;
+    min-width: 550px;
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -208,13 +225,23 @@ color: #4a4a4a;
     flex-direction: column;
     align-items: flex-start;
     padding: 0 20px;
+    margin: 30px 0px;
+    min-width: 320px;
+
+    @media (max-width: 926px) {
+        align-items: center;
+    }
 }
 
 .contact-info p {
     margin: 10px 0 20px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     font-size: 16px;
+    @media (max-width: 926px) {
+        align-items: center;
+    }
 }
 
 
