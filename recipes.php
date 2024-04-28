@@ -40,6 +40,12 @@ body {
     font-weight: bold;
 }
 .container {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-content: center;
+    position: relative;
+    top: 100px;
     width: 100%;
     margin: auto;
     text-align: center;
