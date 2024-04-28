@@ -33,7 +33,7 @@ while($row = $result->fetch_assoc()) {
         $ingredients_list = [];
         while($row2 = $result2->fetch_assoc()) {
             echo $row2['Cleaned_Ingredients'] . "<br/>";
-            $ingredients_list[] = $row2['Cleaned_Ingredients']; // Prepare array for JS
+            $ingredients_list[] = preg_replace( '/[^a-zA-Z0-9 ]/', '', $row2['Cleaned_Ingredients']); // Prepare array for JS
         }
 
         $display_func = "function displayCalories(calorieData) {
