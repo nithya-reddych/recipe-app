@@ -23,7 +23,7 @@ if ($isLoggedIn) {
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Satisfy&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/96c75676d8.js" crossorigin="anonymous"></script>
-<title>Name</title>
+<title>FoodSaver| Recipes</title>
 <?php include 'navbar.php'; ?>
 <style>
 body {
@@ -156,13 +156,13 @@ textarea {
                 $ingredients_list = [];
                 while($row2 = $result2->fetch_assoc()) {
                     echo $row2['Cleaned_Ingredients'] . "<br/>";
-                    $ingredients_list[] = $row2['Cleaned_Ingredients'];
+                    $ingredients_list[] = preg_replace( '/[^a-zA-Z0-9 ]/', '', $row2['Cleaned_Ingredients']);
                 }
 
                 $display_func = "function displayCalories(calorieData) {
                         total = 0
                         Object.keys(calorieData).forEach((key) => total += calorieData[key])
-                        
+                        total = Math.ceil(total);
                         parent = document.getElementById('calories-". $row['ID'] ."')
                         content = document.createElement('p')
                         content.textContent = total + ' calories'
