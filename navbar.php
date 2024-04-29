@@ -12,7 +12,7 @@ $isLoggedIn = isset($_SESSION['login_user']);
     align-items: center;
     padding: 0 5px;
     position: fixed;
-    top: 15px;
+    top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
@@ -22,7 +22,8 @@ $isLoggedIn = isset($_SESSION['login_user']);
     align-items: center;
 }
 .navbar .brand-logo img {
-    height: 50px;
+    height: 150px;
+    width: auto;
 }
 .navbar a.active{
     text-decoration: underline;
@@ -70,7 +71,7 @@ $isLoggedIn = isset($_SESSION['login_user']);
 
 <div class="navbar">
     <div class="brand-logo">
-        <a href="home.php"><img src="./images/logo.jpeg" alt="Logo"></a>
+        <a href="home.php"><img src="./images/logo1.jpeg" alt="Logo"></a>
     </div>
     <div>
         <a href="home.php">Home</a>
